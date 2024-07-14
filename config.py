@@ -36,6 +36,14 @@ PLAYLIST_FETCH_LIMIT = int(getenv("PLAYLIST_FETCH_LIMIT", 45))
 TG_AUDIO_FILESIZE_LIMIT = int(getenv("TG_AUDIO_FILESIZE_LIMIT", "5242880000"))
 TG_VIDEO_FILESIZE_LIMIT = int(getenv("TG_VIDEO_FILESIZE_LIMIT", "5242880000"))
 
+
+AYU = [
+    "🔎", "💫", "🍻", "🔮", "✨", "🍿", "ωαιт вαву", "ᏢᏒᎾᏕᎬᏨᎬᏕᎨᏁᎶ...", "ʅҽƚ ɱҽ ƈԋҽƈƙ", 
+]
+
+
+
+
 # Session strings
 STRING1 = getenv("STRING_SESSION", None)
 STRING2 = getenv("STRING_SESSION2", None)
