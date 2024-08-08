@@ -238,7 +238,7 @@ class YouTubeAPI:
         songvideo: Union[bool, str] = None,
         format_id: Union[bool, str] = None,
         title: Union[bool, str] = None,
-    ) -> str:
+   ) -> str:
         if videoid:
             link = self.base + link
         loop = asyncio.get_running_loop()
