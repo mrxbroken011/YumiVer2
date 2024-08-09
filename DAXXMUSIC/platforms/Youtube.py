@@ -238,7 +238,7 @@ class YouTubeAPI:
         songvideo: Union[bool, str] = None,
         format_id: Union[bool, str] = None,
         title: Union[bool, str] = None,
-   ) -> str:
+    ) -> str:
         if videoid:
             link = self.base + link
         loop = asyncio.get_running_loop()
@@ -328,22 +328,21 @@ class YouTubeAPI:
                 downloaded_file = await loop.run_in_executor(None, video_dl)
             else:
                 proc = await asyncio.create_subprocess_exec(
-                "yt-dlp",
-                "-vU",
-                "-g",
-                "-f", "best[height<=?720][width<=?1280]",
-                f"{link}",
-                stdout=asyncio.subprocess.PIPE,
-                stderr=asyncio.subprocess.PIPE,
-            )
-            stdout, stderr = await proc.communicate()
-            if stdout:
-                downloaded_file = stdout.decode().split("\n")[0]
-                direct = None
-            else:
-                return
-    else:
-        direct = True
-        downloaded_file = await loop.run_in_executor(None, audio_dl)
-
-    return downloaded_file, direct
+                    "yt-dlp",
+                    "-g",
+                    "-f",
+                    "best[height<=?720][width<=?1280]",
+                    f"{link}",
+                    stdout=asyncio.subprocess.PIPE,
+                    stderr=asyncio.subprocess.PIPE,
+                )
+                stdout, stderr = await proc.communicate()
+                if stdout:
+                    downloaded_file = stdout.decode().split("\n")[0]
+                    direct = None
+                else:
+                    return
+        else:
+            direct = True
+            downloaded_file = await loop.run_in_executor(None, audio_dl)
+        return downloaded_file, direct
